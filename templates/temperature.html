@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Conversion</title>
+    </head> 
+
+    <body>
+        <h1>Unit Converter</h1>
+        <h2>Temperature Conversion</h2>
+
+        <!-- LAGAYAN NG VALUE -->
+
+    <div class="container">
+            <label for="tempInput">Enter Value:</label>
+            <input type="tempNumber" id="tempInput" placeholder="Enter value">
+        
+
+        <br><br>
+
+        <!-- FROM UNIT -->
+
+        <div class id="SelectContainer">
+
+            <label for="tempFrom">from</label>
+
+            <select id="tempFrom">
+                <option value="C">Celsius (°C)</option>
+                <option value="F">Fahrenheit (°F)</option>
+                <option value="K">Kelvin (K)</option>
+            </select>
+        
+        <!-- To Unit -->
+
+            <label for="tempTo">to</label>
+
+            <select id="tempTo">
+                <option value="C">Celsius (°C)</option>
+                <option value="F">Fahrenheit (°F)</option>
+                <option value="K">Kelvin (K)</option>
+            </select>
+
+        </div>
+
+        <br><br>
+
+            <div id="tempResult"></div>
+
+        <br><br>
+
+        <!-- BALIK -->
+
+        <div id="balik">
+            <button type="button" onclick="window.location.href='index.html'">Back</button>
+        </div>
+    </div>
+    </body>
+</html>

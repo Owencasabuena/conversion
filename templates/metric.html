@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Conversion</title>
+    </head> 
+
+    <body>
+        <h1>Unit Converter</h1>
+        <h2>Measurement Conversion</h2>
+
+        <!-- LAGAYAN NG VALUE -->
+
+    <div class="container">
+            <label for="metricInput">Enter Value:</label>
+            <input type="number" id="metricInput" placeholder="Enter value">
+        
+
+        <br><br>
+
+        <!-- FROM UNIT -->
+
+        <div class id="SelectContainer">
+
+            <label for="metricFrom">from</label>
+            <select id="metricFrom">
+                <option value="km">kilometers (km)</option>
+                <option value="m">meters (m)</option>
+                <option value="cm">centimeters (cm)</option>
+                <option value="mm">millimeters (mm)</option>
+            </select>
+        
+        <!-- To Unit -->
+
+            <label for="metricTo">to</label>
+
+            <select id="metricTo">
+                <option value="km">kilometers (km)</option>
+                <option value="m">meters (m)</option>
+                <option value="cm">centimeters (cm)</option>
+                <option value="mm">millimeters (mm)</option>
+            </select>
+
+        </div>
+
+        <br><br>
+
+            <div id="measureResult"></div>
+
+        <br><br>
+
+        <!-- BALIK -->
+
+        <div id="balik">
+            <button type="button" onclick="window.location.href='index.html'">Back</button>
+        </div>
+    </div>
+    </body>
+</html>
