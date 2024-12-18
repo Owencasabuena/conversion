@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title> Conversion </title>
-    </head> 
+{% extends 'base.html' %}
 
-    <body>
-        <h1>Unit Converter</h1>
-        <h2> Please Choose </h2>
+{% block css %} 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cssnameraph.css') }}">
+{% endblock %}
 
-        <form>
+{% block content %}
+    <h1>Unit Converter</h1>
+    <h2> Please Choose </h2>
 
-            <button type="submit" formaction="temperature.html">Convert Temperature</button>
-            <button type="submit" formaction="metric.html">Convert Measurement</button>
-                
-        </form>
-    
-    </body>
-
-</html>
+    <form method="post" action="/">
+        {{ form.hidden_tag() }}
+        {{ form.convert_temperature() }}
+        {{ form.convert_measurement() }}
+    </form>
+{% endblock %}
