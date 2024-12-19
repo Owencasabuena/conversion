@@ -1,59 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Conversion</title>
-    </head> 
+{% extends 'base.html' %}
 
-    <body>
-        <h1>Unit Converter</h1>
-        <h2>Temperature Conversion</h2>
+{% block css %} 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cssnameraph.css') }}">
+{% endblock %}
 
-        <!-- LAGAYAN NG VALUE -->
+{% block content %}
+    <h1>Unit Converter</h1>
+    <h2>Temperature Conversion</h2>
 
-    <div class="container">
-            <label for="tempInput">Enter Value:</label>
-            <input type="tempNumber" id="tempInput" placeholder="Enter value">
-        
+    <form method="post" action="{{ url_for('temperature') }}">
+        {{ form.hidden_tag() }}
 
-        <br><br>
+        <label for="value">Enter Value:</label>
+        {{ form.value() }}
 
-        <!-- FROM UNIT -->
+        <label for="temp_from">From:</label>
+        {{ form.temp_from() }}
 
-        <div class id="SelectContainer">
+        <label for="temp_to">To:</label>
+        {{ form.temp_to() }}
 
-            <label for="tempFrom">from</label>
+        {{ form.submit() }}
+    </form>
 
-            <select id="tempFrom">
-                <option value="C">Celsius (°C)</option>
-                <option value="F">Fahrenheit (°F)</option>
-                <option value="K">Kelvin (K)</option>
-            </select>
-        
-        <!-- To Unit -->
+    <br>
 
-            <label for="tempTo">to</label>
-
-            <select id="tempTo">
-                <option value="C">Celsius (°C)</option>
-                <option value="F">Fahrenheit (°F)</option>
-                <option value="K">Kelvin (K)</option>
-            </select>
-
-        </div>
-
-        <br><br>
-
-            <div id="tempResult"></div>
-
-        <br><br>
-
-        <!-- BALIK -->
-
-        <div id="balik">
-            <button type="button" onclick="window.location.href='index.html'">Back</button>
-       
-        </div>
-    </div>
-    </body>
-</html>
+    {% if result %}
+        <h3>Result: {{ result }}</h3>
+    {% endif %}

@@ -1,26 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Conversion</title>
-    </head> 
+{% extends 'base.html' %}
 
-    <body>
-        <h1>Unit Converter</h1>
-        <h2>Measurement Conversion</h2>
+{% block css %} 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cssnameraph.css') }}">
+{% endblock %}
 
-        <!-- LAGAYAN NG VALUE -->
+{% block content %}
+    <h1>Unit Converter</h1>
+    <h2>Measurement Conversion</h2>
 
-    <div class="container">
-            <label for="metricInput">Enter Value:</label>
-            <input type="number" id="metricInput" placeholder="Enter value">
-        
+    <form method="post" action="{{ url_for('metric') }}">
+        {{ form.hidden_tag() }}
 
-        <br><br>
+        <label for="value">Enter Value:</label>
+        {{ form.value() }}
 
-        <!-- FROM UNIT -->
+        <label for="metric_from">From:</label>
+        {{ form.metric_from() }}
 
-        <div class id="SelectContainer">
+        <label for="metric_to">To:</label>
+        {{ form.metric_to() }}
 
             <label for="metricFrom">from</label>
             <select id="metricFrom">
@@ -30,30 +28,14 @@
                 <option value="mm">millimeters (mm)</option>
             </select>
         
-        <!-- TO UNIT -->
 
-            <label for="metricTo">to</label>
 
-            <select id="metricTo">
-                <option value="km">kilometers (km)</option>
-                <option value="m">meters (m)</option>
-                <option value="cm">centimeters (cm)</option>
-                <option value="mm">millimeters (mm)</option>
-            </select>
+    <br>
 
-        </div>
+    {% if result %}
+        <h3>Result: {{ result }}</h3>
+    {% endif %}
 
-        <br><br>
-
-            <div id="measureResult"></div>
-
-        <br><br>
-
-        <!-- BALIK -->
-
-        <div id="balik">
-            <button type="button" onclick="window.location.href='index.html'">Back</button>
-        </div>
-    </div>
-    </body>
-</html>
+    <a href="{{ url_for('index') }}">Back</a>
+    
+{% endblock %}
