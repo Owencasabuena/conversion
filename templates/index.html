@@ -1,16 +1,23 @@
 {% extends 'base.html' %}
 
 {% block css %} 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/cssnameraph.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
 
 {% block content %}
-    <h1>Unit Converter</h1>
-    <h2> Please Choose </h2>
 
-    <form method="post" action="/">
-        {{ form.hidden_tag() }}
-        {{ form.convert_temperature() }}
-        {{ form.convert_measurement() }}
-    </form>
+
+    <div class="laman"> 
+        <h1>Unit Converter</h1>
+
+
+        <h2> Please Choose </h2>
+
+   
+        <form method="post" action="/">
+            {{ form.hidden_tag() }}
+            {{ form.convert_temperature() }}
+            {{ form.convert_measurement() }}
+        </form>
+    </div>
 {% endblock %}
