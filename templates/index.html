@@ -1,23 +1,24 @@
 {% extends 'base.html' %}
-
 {% block css %} 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
-
 {% block content %}
-
-
-    <div class="laman"> 
-        <h1>Unit Converter</h1>
-
-
-        <h2> Please Choose </h2>
-
-   
-        <form method="post" action="/">
-            {{ form.hidden_tag() }}
-            {{ form.convert_temperature() }}
-            {{ form.convert_measurement() }}
-        </form>
+    <div class="container">
+        <div class="sidebar">
+            <div class="buttons"> 
+                <form method="post" action="/">
+                    {{ form.hidden_tag() }}
+                    <div class="tempbutton">
+                    {{ form.convert_temperature(class_="tempbutton") }} </div><br><br>
+                    {{ form.convert_measurement() }}
+                </form>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="startpage">
+                <h1>Unit Converter</h1>
+                <h2>please select.</h2>
+            </div>
+        </div>
     </div>
 {% endblock %}

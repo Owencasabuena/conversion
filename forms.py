@@ -3,8 +3,8 @@ from wtforms import DecimalField, FloatField, SelectField, SubmitField
 from wtforms.validators import DataRequired
 
 class conversionForm(FlaskForm):
-    convert_temperature = SubmitField("Convert Temperature")
-    convert_measurement = SubmitField("Convert Measurement")
+    convert_temperature = SubmitField("Temperature")
+    convert_measurement = SubmitField("Measurement")
 
 class measurementForm(FlaskForm):
     value = DecimalField('Enter Value', validators=[DataRequired()])
