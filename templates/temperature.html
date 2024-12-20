@@ -1,34 +1,47 @@
 {% extends 'base.html' %}
 
-{% block css %} 
+{% block css %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tempstyle.css') }}">
+
 {% endblock %}
 
 {% block content %}
+<div class="converter-container">
     <h1>Unit Converter</h1>
     <h2>Temperature Conversion</h2>
+    <div class="temp-converter">
 
-    <form method="post" action="{{ url_for('temperature') }}">
-        {{ form.hidden_tag() }}
 
-        <label for="value">Enter Value:</label>
-        {{ form.value() }}
+        <form method="post" action="{{ url_for('temperature') }}" class="converter-form">
+            {{ form.hidden_tag() }}
 
-        <label for="temp_from">From:</label>
-        {{ form.temp_from() }}
+            <div class="input-group">
+                <input type="text" 
+                       id="value" 
+                       name="value" 
+                       class="form-input" 
+                       placeholder="Enter temperature">
+            </div>
 
-        <label for="temp_to">To:</label>
-        {{ form.temp_to() }}
+            <div class="conversion-row">
+                {{ form.temp_from(class_="form-select") }}
+                <label for="temp_to" class="conversion-label">to</label>
+                {{ form.temp_to(class_="form-select") }}
+            </div>
 
-        {{ form.submit(class_="tempConvertButton") }}
-    </form>
+            {{ form.submit(class_="convert-button") }}
 
-    <br>
+            {% if result %}
+                <div class="result">
+                    <h3>Result: {{ result }}</h3>
+                </div>
+            {% endif %}
+        </form>
 
-    {% if result %}
-        <h3>Result: {{ result }}</h3>
-    {% endif %}
-
-    <a href="{{ url_for('index') }}">Back</a>
-    
+        <div class="button-container">
+            <a href="{{ url_for('index') }}" class="back-link">Back</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

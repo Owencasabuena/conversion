@@ -24,21 +24,21 @@ def convert_temp(value, from_unit, to_unit):
     try:
         if from_unit == 'C':
             if to_unit == 'K':
-                return (value + 273.15)
+                return f"{(value + 273.15)} K"
             elif to_unit == 'F':
-                return ((value * 9/5) + 32)
-            
-        elif from_unit == 'K':
-            if to_unit == 'C':
-                return (value - 273.15)
-            elif to_unit == 'F':
-                return (((value - 273.15) * 9/5) + 32)
-            
-        elif from_unit == 'F':
-            if to_unit == 'C':
-                return ((value - 32) * 5/9)
-            elif to_unit == 'K':
-                return (((value - 32) * 5/9) + 32)
+                return f"{(value * 9/5) + 32} °F"
+
+            elif from_unit == 'K':
+                if to_unit == 'C':
+                    return f"{(value - 273.15)} °C"
+                elif to_unit == 'F':
+                    return f"{{{((value - 273.15) * 9/5) + 32}}} °F"
+
+            elif from_unit == 'F':
+                if to_unit == 'C':
+                    return f"{{{((value - 32) * 5/9)}}} °C"
+                elif to_unit == 'K':
+                    return f"{{{((value - 32) * 5/9) + 32}}} K"
             
         raise ValueError("Invalid temperature units provided.")
     except ValueError as e:

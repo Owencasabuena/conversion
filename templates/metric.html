@@ -2,40 +2,44 @@
 
 {% block css %} 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/metricstyle.css') }}">
+    
 {% endblock %}
 
 {% block content %}
+<div class="converter-container">
     <h1>Unit Converter</h1>
     <h2>Measurement Conversion</h2>
 
-    <form method="post" action="{{ url_for('metric') }}">
+    <form method="post" action="{{ url_for('metric') }}" class="converter-form">
         {{ form.hidden_tag() }}
 
-        <label for="value">Enter Value:</label>
-        {{ form.value() }}
+        <div class="input-group">
+            <label for="value">Enter Value:</label>
+            {{ form.value(class_="form-input", placeholder="Enter a number") }}
+        </div>
 
-        <label for="metric_from">From:</label>
-        {{ form.metric_from() }}
+        <div class="conversion-row">
+            <div class="input-group">
+                <label for="metric_from">From:</label>
+                {{ form.metric_from(class_="form-select") }}
+            </div>
 
-        <label for="metric_to">To:</label>
-        {{ form.metric_to() }}
+            <div class="input-group">
+                <label for="metric_to">To:</label>
+                {{ form.metric_to(class_="form-select") }}
+            </div>
+        </div>
 
-            <label for="metricFrom">from</label>
-            <select id="metricFrom">
-                <option value="km">kilometers (km)</option>
-                <option value="m">meters (m)</option>
-                <option value="cm">centimeters (cm)</option>
-                <option value="mm">millimeters (mm)</option>
-            </select>
-        
+        <input type="submit" value="Convert" class="convert-button">
 
+        {% if result %}
+            <h3 class="result">{{ result }}</h3>
+        {% endif %}
 
-    <br>
-
-    {% if result %}
-        <h3>Result: {{ result }}</h3>
-    {% endif %}
-
-    <a href="{{ url_for('index') }}">Back</a>
-    
+        <div class="button-container">
+            <a href="{{ url_for('index') }}" class="back-link">Back</a>
+        </div>
+    </form>
+</div>
 {% endblock %}
